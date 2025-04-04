@@ -1,9 +1,7 @@
 <!-- Registration Form -->
 <form [formGroup]="profileForm" class="form" (ngSubmit)="onSubmit()">
-  
   <!-- Personal Data Section -->
   <div class="personal-data">
-    
     <!-- First Name Input -->
     <div class="personal-data1">
       <div class="form-input">
@@ -11,29 +9,31 @@
           <mat-label>First Name<sup>*</sup></mat-label>
           <input matInput placeholder="Bhargav" formControlName="firstName" />
           <mat-icon matSuffix>badge</mat-icon>
-          
+
           <!-- Validation Message -->
-          @if (profileForm.get('firstName')?.invalid && profileForm.get('firstName')?.touched) {
+          @if (profileForm.get('firstName')?.invalid &&
+          profileForm.get('firstName')?.touched) {
           <mat-hint class="hint-color">First Name is required</mat-hint>
           }
         </mat-form-field>
       </div>
-  
+
       <!-- Last Name Input -->
       <div class="form-input">
         <mat-form-field appearance="outline" floatLabel="always">
           <mat-label>Last Name<sup>*</sup></mat-label>
           <input matInput placeholder="Ballani" formControlName="lastName" />
           <mat-icon matSuffix>person_pin</mat-icon>
-          
+
           <!-- Validation Message -->
-          @if (profileForm.get('lastName')?.invalid && profileForm.get('lastName')?.touched) {
+          @if (profileForm.get('lastName')?.invalid &&
+          profileForm.get('lastName')?.touched) {
           <mat-hint class="hint-color">Last Name is required</mat-hint>
           }
         </mat-form-field>
       </div>
     </div>
-  
+
     <div class="personal-data2">
       <!-- Email Input -->
       <div class="form-input">
@@ -41,66 +41,79 @@
           <mat-label>Email<sup>*</sup></mat-label>
           <input matInput placeholder="bbm@gmail.com" formControlName="email" />
           <mat-icon matSuffix>email</mat-icon>
-          
+
           <!-- Validation Messages -->
-          @if (profileForm.get('email')?.touched && profileForm.get('email')?.invalid) {
+          @if (profileForm.get('email')?.touched &&
+          profileForm.get('email')?.invalid) {
           <mat-hint class="hint-color">
-            @if (profileForm.get('email')?.errors?.['required']) {Email is required}
-            @else if (profileForm.get('email')?.errors?.['email']) {Invalid email format}
+            @if (profileForm.get('email')?.errors?.['required']) {Email is
+            required} @else if (profileForm.get('email')?.errors?.['email'])
+            {Invalid email format}
           </mat-hint>
           }
         </mat-form-field>
       </div>
-  
+
       <!-- Phone Input -->
       <div class="form-input">
         <mat-form-field appearance="outline" floatLabel="always">
           <mat-label>Phone<sup>*</sup></mat-label>
           <input matInput placeholder="9988776655" formControlName="phone" />
           <mat-icon matSuffix>phone</mat-icon>
-          
+
           <!-- Validation Messages -->
-          @if (profileForm.get('phone')?.touched && profileForm.get('phone')?.invalid) {
+          @if (profileForm.get('phone')?.touched &&
+          profileForm.get('phone')?.invalid) {
           <mat-hint class="hint-color">
-            @if (profileForm.get('phone')?.errors?.['required']) {Phone is required}
-            @else if (profileForm.get('phone')?.errors?.['minlength'] || profileForm.get('phone')?.errors?.['maxlength']) {
-              Phone must be 10 digits
-            }
+            @if (profileForm.get('phone')?.errors?.['required']) {Phone is
+            required} @else if (profileForm.get('phone')?.errors?.['minlength']
+            || profileForm.get('phone')?.errors?.['maxlength']) { Phone must be
+            10 digits }
           </mat-hint>
           }
         </mat-form-field>
       </div>
     </div>
-  
+
     <div class="personal-data3">
       <!-- Password Input -->
       <div class="form-input">
         <mat-form-field appearance="outline" floatLabel="always">
           <mat-label>Password<sup>*</sup></mat-label>
-          <input matInput type="password" placeholder="Create Password" formControlName="password" />
+          <input
+            matInput
+            type="password"
+            placeholder="Create Password"
+            formControlName="password"
+          />
           <mat-icon matSuffix>lock</mat-icon>
-          
+
           <!-- Validation Messages -->
-          @if (profileForm.get('password')?.touched && profileForm.get('password')?.invalid) {
+          @if (profileForm.get('password')?.touched &&
+          profileForm.get('password')?.invalid) {
           <mat-hint class="hint-color">
-            @if (profileForm.get('password')?.errors?.['required']) {Password is required}
-            @else if (profileForm.get('password')?.errors?.['notValid']) {
-              Password must contain uppercase, number, special character, min 8 chars
-            }
+            @if (profileForm.get('password')?.errors?.['required']) {Password is
+            required} @else if
+            (profileForm.get('password')?.errors?.['notValid']) { Password must
+            contain uppercase, number, special character, min 8 chars }
           </mat-hint>
           }
         </mat-form-field>
       </div>
     </div>
   </div>
-  
+
   <!-- Address Section -->
   <div formGroupName="address" class="address">
     <div class="address-child">
       <div class="form-input">
         <mat-form-field appearance="outline" floatLabel="always">
           <mat-label>Street</mat-label>
-          <input matInput placeholder="Temple Street" formControlName="street" />
+          <input
+            matInput
+            placeholder="Temple Street"
+            formControlName="street"
+          />
           <mat-icon matSuffix>home</mat-icon>
         </mat-form-field>
       </div>
@@ -139,7 +152,7 @@
       </div>
     </div>
   </div>
-  
+
   <!-- Hobbies Section -->
   <div formArrayName="hobbies">
     <div class="hobbies-input">
@@ -153,7 +166,7 @@
       </div>
       }
     </div>
-  
+
     <!-- Add Hobby Button (Visible when less than 2 hobbies) -->
     @if (hobbies.controls.length < 2) {
     <div class="hobbies-button">
@@ -163,15 +176,23 @@
     </div>
     }
   </div>
-  
+
   <!-- Submit Button & Notification -->
   <div class="submit-section">
     <button mat-raised-button type="submit" [disabled]="!profileForm.valid">
       Register User
     </button>
-    
+
     @if (notification) {
-    <div class="notification" style="background-color: green; color: white; padding: 10px; margin-top: 10px;">
+    <div
+      class="notification"
+      style="
+        background-color: green;
+        color: white;
+        padding: 10px;
+        margin-top: 10px;
+      "
+    >
       {{ notification }}
     </div>
     }

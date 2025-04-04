@@ -8,7 +8,9 @@
 }
 
 /* Sections for different personal details */
-.personal-data1, .personal-data2, .personal-data3 {
+.personal-data1,
+.personal-data2,
+.personal-data3 {
   display: flex;
   flex-wrap: wrap; /* Allows wrapping for better responsiveness */
 }
@@ -56,4 +58,3 @@
   flex-direction: column; /* Centers submit button */
   align-items: center;
 }
-

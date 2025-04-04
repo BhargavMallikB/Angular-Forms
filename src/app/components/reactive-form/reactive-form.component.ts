@@ -1,7 +1,12 @@
 import { Component, inject } from '@angular/core';
-import { 
-  FormBuilder, ReactiveFormsModule, Validators, 
-  ValidationErrors, ValidatorFn, AbstractControl, FormArray 
+import {
+  FormBuilder,
+  ReactiveFormsModule,
+  Validators,
+  ValidationErrors,
+  ValidatorFn,
+  AbstractControl,
+  FormArray,
 } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
@@ -11,9 +16,15 @@ import { MatButtonModule } from '@angular/material/button';
 @Component({
   selector: 'app-reactive-form',
   standalone: true,
-  imports: [MatFormFieldModule, ReactiveFormsModule, MatInputModule, MatIconModule, MatButtonModule],
+  imports: [
+    MatFormFieldModule,
+    ReactiveFormsModule,
+    MatInputModule,
+    MatIconModule,
+    MatButtonModule,
+  ],
   templateUrl: './reactive-form.component.html',
-  styleUrl: './reactive-form.component.scss'
+  styleUrl: './reactive-form.component.scss',
 })
 export class ReactiveFormComponent {
   private formBuilder = inject(FormBuilder);
@@ -22,9 +33,12 @@ export class ReactiveFormComponent {
   // Defining the reactive form structure
   profileForm = this.formBuilder.group({
     firstName: ['', Validators.required], // First Name is required
-    lastName: ['', Validators.required],  // Last Name is required
+    lastName: ['', Validators.required], // Last Name is required
     email: ['', [Validators.required, Validators.email]], // Email with validation
-    phone: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(10)]], // 10-digit phone number validation
+    phone: [
+      '',
+      [Validators.required, Validators.minLength(10), Validators.maxLength(10)],
+    ], // 10-digit phone number validation
     address: this.formBuilder.group({
       street: [''],
       city: [''],
@@ -32,7 +46,7 @@ export class ReactiveFormComponent {
       zip: ['', [Validators.minLength(6), Validators.maxLength(6)]], // Zip must be 6 digits
     }),
     hobbies: this.formBuilder.array([this.formBuilder.control('')]), // Hobbies list with at least one input field
-    password: ['', [Validators.required, this.validatePassword()]] // Password with custom validation
+    password: ['', [Validators.required, this.validatePassword()]], // Password with custom validation
   });
 
   // Getter to access hobbies FormArray
@@ -50,10 +64,13 @@ export class ReactiveFormComponent {
   // Function to handle form submission
   onSubmit() {
     if (this.profileForm.valid) {
-      localStorage.setItem('profileData', JSON.stringify(this.profileForm.value)); // Save data locally
+      localStorage.setItem(
+        'profileData',
+        JSON.stringify(this.profileForm.value)
+      ); // Save data locally
       this.notification = 'Profile saved successfully'; // Show success message
       this.profileForm.reset(); // Reset the form after submission
-      
+
       // Hide notification after 3 seconds
       setTimeout(() => {
         this.notification = '';
@@ -70,7 +87,10 @@ export class ReactiveFormComponent {
       const hasSpecialCharacter = /[!@#$%^&*(),.?":{}|<>]/.test(password); // Must contain a special character
       const hasMinCharacters = password.length >= 8; // Must be at least 8 characters long
 
-      return hasUpperCase && hasNumber && hasSpecialCharacter && hasMinCharacters
+      return hasUpperCase &&
+        hasNumber &&
+        hasSpecialCharacter &&
+        hasMinCharacters
         ? null
         : { notValid: true };
     };
