@@ -1,1 +1,126 @@
-<p>template-driven-form works!</p>
+<mat-card class="form-container">
+  <h4>Template-driven Form</h4>
+
+  <form #userForm="ngForm" (ngSubmit)="onSubmit(userForm)">
+    <!-- Notification -->
+    <mat-card *ngIf="notification" class="notification-card">
+      <p>{{ notification }}</p>
+    </mat-card>
+
+    <!-- First Name -->
+    <mat-form-field appearance="outline" class="form-field">
+      <mat-label>First Name</mat-label>
+      <input
+        matInput
+        type="text"
+        name="firstName"
+        [(ngModel)]="user.firstName"
+        required
+        #firstNameCtrl="ngModel"
+      />
+      <mat-error *ngIf="firstNameCtrl.errors?.['required']">
+        First Name is required.
+      </mat-error>
+    </mat-form-field>
+
+    <!-- Last Name -->
+    <mat-form-field appearance="outline" class="form-field">
+      <mat-label>Last Name</mat-label>
+      <input
+        matInput
+        type="text"
+        name="lastName"
+        [(ngModel)]="user.lastName"
+        required
+        #lastNameCtrl="ngModel"
+      />
+      <mat-error *ngIf="lastNameCtrl.errors?.['required']">
+        Last Name is required.
+      </mat-error>
+    </mat-form-field>
+
+    <!-- Email -->
+    <mat-form-field appearance="outline" class="form-field">
+      <mat-label>Email</mat-label>
+      <input
+        matInput
+        type="email"
+        name="email"
+        [(ngModel)]="user.email"
+        required
+        #emailCtrl="ngModel"
+      />
+      <mat-error *ngIf="emailCtrl.errors?.['required']">
+        Email is required.
+      </mat-error>
+      <mat-error *ngIf="emailCtrl.errors?.['email']">
+        Enter a valid email.
+      </mat-error>
+    </mat-form-field>
+
+    <!-- Age -->
+    <mat-form-field appearance="outline" class="form-field">
+      <mat-label>Age</mat-label>
+      <input
+        matInput
+        type="number"
+        name="age"
+        [(ngModel)]="user.age"
+        min="18"
+        required
+        #ageCtrl="ngModel"
+      />
+      <mat-error *ngIf="ageCtrl.errors?.['required']">
+        Age is required.
+      </mat-error>
+      <mat-error *ngIf="ageCtrl.errors?.['min']">
+        Minimum age is 18.
+      </mat-error>
+    </mat-form-field>
+
+    <!-- Action Buttons -->
+    <div class="button-group">
+      <button
+        mat-raised-button
+        color="primary"
+        type="submit"
+        [disabled]="userForm.invalid"
+      >
+        Submit
+      </button>
+      <button
+        mat-raised-button
+        color="warn"
+        type="button"
+        (click)="onReset(userForm)"
+      >
+        Reset
+      </button>
+      <button
+        *ngIf="savedUsers.length > 0"
+        mat-raised-button
+        color="accent"
+        type="button"
+        (click)="onClearAll()"
+      >
+        Clear All
+      </button>
+    </div>
+
+    <!-- Saved Users List -->
+    <mat-card class="saved-users" *ngIf="savedUsers.length > 0">
+      <h3>Saved Users: {{ savedUsers.length }}</h3>
+      <mat-list>
+        <mat-list-item *ngFor="let user of savedUsers">
+          <span class="saved-user-info">
+            {{ user.firstName }} {{ user.lastName }} ({{ user.email }}, Age:
+            {{ user.age }})
+          </span>
+        </mat-list-item>
+      </mat-list>
+    </mat-card>
+
+    <!-- No Users Message -->
+    <p *ngIf="savedUsers.length === 0" class="no-users">No users saved yet.</p>
+  </form>
+</mat-card>

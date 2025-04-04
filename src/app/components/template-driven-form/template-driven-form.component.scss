@@ -1,0 +1,54 @@
+// Center align all h4 elements
+h4 {
+  text-align: center;
+}
+
+// Styles for the form container
+.form-container {
+  max-width: 500px; // Limits the width to 500px for a neat look
+  margin: auto; // Centers the form horizontally
+  padding: 20px; // Adds spacing inside the container
+}
+
+// Styles for each form field
+.form-field {
+  width: 100%; // Ensures the input fields take full width
+  margin-bottom: 15px; // Adds spacing between form fields
+}
+
+// Styling for button group (Submit, Reset, Clear All)
+.button-group {
+  display: flex; // Aligns buttons in a row
+  justify-content: space-between; // Distributes buttons evenly
+  margin-top: 20px; // Adds spacing above buttons
+}
+
+// Styles for the saved users section
+.saved-users {
+  margin-top: 20px; // Adds spacing above the saved users section
+  padding: 15px; // Adds padding for better spacing
+  background-color: #f9f9f9; // Light grey background for better visibility
+}
+
+// Styles for saved user information
+.saved-user-info {
+  font-size: 16px; // Makes the text slightly larger for readability
+  font-weight: bold; // Makes the text bold for emphasis
+}
+
+// Styles for the "No Users" message
+.no-users {
+  text-align: center; // Centers the message
+  color: #888; // Uses a grey color to indicate no data
+  font-size: 14px; // Slightly smaller font size
+}
+
+// Styles for the notification card
+.notification-card {
+  background-color: #e8f5e9; // Light green background for success messages
+  padding: 10px; // Adds padding inside the notification box
+  color: green; // Green text color for success indication
+  text-align: center; // Centers the notification text
+  border-radius: 5px; // Rounds the corners for a smoother look
+  margin-bottom: 15px; // Adds spacing below the notification card
+}
