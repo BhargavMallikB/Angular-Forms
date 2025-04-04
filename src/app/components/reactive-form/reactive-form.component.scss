@@ -1,0 +1,59 @@
+/* Main form container styling */
+.form {
+  margin: 15px; /* Adds spacing around the form */
+  padding: 10px; /* Padding inside the form */
+  display: flex;
+  flex-direction: column; /* Ensures form elements are stacked */
+  align-items: center; /* Centers items horizontally */
+}
+
+/* Sections for different personal details */
+.personal-data1, .personal-data2, .personal-data3 {
+  display: flex;
+  flex-wrap: wrap; /* Allows wrapping for better responsiveness */
+}
+
+/* Address section styling */
+.address {
+  display: flex;
+  flex-direction: column; /* Ensures address inputs are stacked */
+}
+
+/* Child container for address fields */
+.address-child {
+  display: flex;
+  flex-direction: row; /* Keeps fields in a row */
+  flex-wrap: wrap; /* Suggestion: Add wrapping to improve responsiveness */
+}
+
+/* Form input styling */
+.form-input {
+  margin: 10px; /* Spacing between input fields */
+  min-width: 250px; /* Ensures a minimum width for better layout */
+  flex: 1; /* Suggestion: Add flex-grow for better space distribution */
+}
+
+/* Styling for validation hints */
+.hint-color {
+  color: red; /* Displays validation errors in red */
+}
+
+/* Hobbies input container */
+.hobbies-input {
+  display: flex;
+  flex-wrap: wrap; /* Allows items to wrap for better layout */
+}
+
+/* Styling for the add hobby button */
+.hobbies-button {
+  margin: 10px;
+}
+
+/* Submit button section */
+.submit-section {
+  margin: 15px; /* Adds spacing around the section */
+  display: flex;
+  flex-direction: column; /* Centers submit button */
+  align-items: center;
+}
+
